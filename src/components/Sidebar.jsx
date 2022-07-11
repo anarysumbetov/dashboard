@@ -29,7 +29,8 @@ const Sidebar = () => {
           <TooltipComponent content="Menu" position="BottomCenter">
             <button 
             type="button"
-            onClick={() => setActiveMenu((prevActiveMenu) => !prevActiveMenu)}
+            onClick={() => setActiveMenu(!activeMenu)}
+            style={{ color: currentColor }}
             // md:hidden is hide our bottom with menu
             className="text-xl rounded-full p-3 hover:bg-light-gray mt-4 block md:hidden"
             >
@@ -49,14 +50,12 @@ const Sidebar = () => {
                 key={Link.name}
                 onClick={handleCloseSideBar}
                 style={({ isActive }) => ({
-                  backgroundColor: isActive ? currentColor: ''
+                  backgroundColor: isActive ? currentColor : ''
                 })}
-                className={({ isActive }) => isActive ? activeLink : normalLink}
+                className={({ isActive }) => (isActive ? activeLink : normalLink)}
                 >
                   {Link.icon}
-                  <span className="capitalize">
-                    {Link.name}
-                  </span>
+                  <span className="capitalize ">{Link.name}</span>
                 </NavLink>
               ))}
             </div>
